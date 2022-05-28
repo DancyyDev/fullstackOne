@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+    <title>Rat Log</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section class="container">
+
+    <!-- <section class="page-header text-center">
+        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </section> -->
+
+    <section class="row">
+
+        <!-- LOCAL INFORMATION -->
+        <section class="profile">
+            <section class="innerProfile">
+                <% if (user.local.email)  {%>
+                    <p>
+                    <strong>email</strong>: <%= user.local.email %><br>
+                    <strong>password</strong>: <%= user.local.password %>
+                    </p>
+                    <% } %>
+                    <a href="/logout" class="logOut"><button>Log-out</button></a>
+            </section>
+        </section>
+
+        <section id="ratForm">
+        <% if (user.local.email) { %>
+            <form action="/ratForm" method="POST">
+              <input type="date" class="info name" name="date" placeholder="Today's Date">
+              <input type="text" class="info name" name="name" placeholder="Rat Name">
+              <input type="text" class="info weight" name="weight" placeholder="Weight">
+              <input type="text" class="info eye-color" name="eyeColor" placeholder="Eye Color">
+              <input type="text" class="info fur-color" name="furColor" placeholder="Fur Color">
+              <input type="text" class="info breed" name="breed" placeholder="Breed">
+              <input type="text" class="info note" name="dailyNote" placeholder="Daily Notes">
+              <button type="submit">Edit</button>
+            </form>
+          <% } %>
+          
+        </section>
+    </section>
+</section>
+
+    <section class="ratDisplay">
+      <h3>Rat Record</h3>
+      <section class="ratDaily">
+      <% for(var i=0; i<ratRecord.length; i++) {%>
+        <aside class="ratRecord">
+          <a  href="/edit"><button type="button">Edit</button></a>
+          <span class="record" ><p>Recorded Date:</p><%= ratRecord[i].date %></span>
+          <span class="record" ><p>Name:</p><%= ratRecord[i].name %></span>
+          <span class="record" ><p>Weight:</p><%= ratRecord[i].weight %></span>
+          <span class="record" ><p>Eye Color:</p><%= ratRecord[i].eyeColor %></span>
+          <span class="record" ><p>Fur Color:</p><%= ratRecord[i].furColor %></span>
+          <span class="record" ><p>Breed:</p><%= ratRecord[i].breed %></span>
+          <span class="record" ><p>Note:</p><%= ratRecord[i].note %></span>
+          <button href="/delete">Delete</button>
+        </aside>
+      <% } %>
+    </section>
+
+    <% if (user.local.email) { %>
+        <form action="/messages" method="POST">
+          <input type="text" value="<%= user.local.email %>" name="name">
+          <input type="text" placeholder="message" name="msg">
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+      <% } %>
+        
+
+
+
+<!-- <script src="main.js"></script> -->
+
+</body>
+</html>

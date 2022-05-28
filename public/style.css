@@ -1,0 +1,89 @@
+* {
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+
+/* ============ */
+/* Home.ejs */
+header {
+    height: 5rem;
+    width:100%;
+}
+h1 {
+    font-weight: 600;
+    font-size: 2.5rem;
+    margin:0 7%;
+}
+
+.landpage {
+    margin: 0 5%;
+    width: 40%;
+    float: left;
+}
+
+.landpage h2 {
+    font-size: 1.5rem;
+    margin: 1rem 3rem;
+}
+
+.landpage form {
+    width: 90%;
+    margin: 0 5%;
+    float: left;
+}
+
+.landpage input {
+    display: block;
+    height: 2rem;
+    width: 90%;
+    margin: 1rem 5%;
+}
+
+button {
+    width:50%;
+    margin: 0 25%;
+}
+
+/* /////////////////// */
+/* index styling */
+/* /////////////////// */
+
+.profile {
+    display: block;
+    width:10%;
+    height: 20rem;
+}
+
+#ratform {
+    display: block;
+    width:20%;
+    height: 25rem;
+}
+
+#ratForm input {
+    display: block;
+}
+
+.ratDisplay,
+.ratDaily {
+    float: left;
+    width: 80%;
+    height: 50rem;
+}
+
+.ratRecord {
+    float: left;
+    width: 20%;
+    height: 20rem;
+}
+.record {
+    display: block;
+    font-size: 1.2rem;
+}
+p {
+    display:block;
+    font-size: .8rem;
+    font-weight: 600;
+}
+
