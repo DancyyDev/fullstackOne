@@ -2,10 +2,11 @@
 <html>
 <head>
     <title>Rat Log</title>
+    <script src="https://kit.fontawesome.com/d60e865119.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<section class="container">
+  <section class="container">
 
     <!-- <section class="page-header text-center">
         <h1><span class="fa fa-anchor"></span> Profile Page</h1>
@@ -23,6 +24,7 @@
                     <strong>password</strong>: <%= user.local.password %>
                     </p>
                     <% } %>
+
                     <a href="/logout" class="logOut"><button>Log-out</button></a>
             </section>
         </section>
@@ -30,38 +32,46 @@
         <section id="ratForm">
         <% if (user.local.email) { %>
             <form action="/ratForm" method="POST">
-              <input type="date" class="info name" name="date" placeholder="Today's Date">
+              <input type="date" class="info date" name="date" placeholder="Today's Date">
               <input type="text" class="info name" name="name" placeholder="Rat Name">
-              <input type="text" class="info weight" name="weight" placeholder="Weight">
-              <input type="text" class="info eye-color" name="eyeColor" placeholder="Eye Color">
-              <input type="text" class="info fur-color" name="furColor" placeholder="Fur Color">
-              <input type="text" class="info breed" name="breed" placeholder="Breed">
               <input type="text" class="info note" name="dailyNote" placeholder="Daily Notes">
               <button type="submit">Submit</button>
             </form>
+
           <% } %>
-          
+
         </section>
     </section>
-</section>
+    
+  </section>
 
-    <section class="ratDisplay">
+  <section class="ratDisplay">
       <h3>Rat Record</h3>
+      
       <section class="ratDaily">
-      <% for(var i=0; i<ratRecord.length; i++) {%>
-        <aside class="ratRecord">
-          <button href="/edit">Edit</button>
-          <span class="record" ><p>Recorded Date:</p><%= ratRecord[i].date %></span>
-          <span class="record" ><p>Name:</p><%= ratRecord[i].name %></span>
-          <span class="record" ><p>Weight:</p><%= ratRecord[i].weight %></span>
-          <span class="record" ><p>Eye Color:</p><%= ratRecord[i].eyeColor %></span>
-          <span class="record" ><p>Fur Color:</p><%= ratRecord[i].furColor %></span>
-          <span class="record" ><p>Breed:</p><%= ratRecord[i].breed %></span>
-          <span class="record" ><p>Note:</p><%= ratRecord[i].note %></span>
-          <button class="trash">Delete</button>
-        </aside>
-      <% } %>
-    </section>
+        <ul class="ratRecord">
+        <% for(var i=0; i<ratRecord.length; i++) {%>
+        
+          <li class="ratList">
+            <p>Recorded Date:</p><span class="record date" ><%= ratRecord[i].date %></span>
+            <p>Name:</p><span class="record name" ><%= ratRecord[i].name %></span>
+            <p>Note:</p><span class="record note" ><%= ratRecord[i].note %></span>
+            <span><i class="fa-solid fa-trash-can"></i></i></span>
+            <span><i class="fa-solid fa-wrench"></i></i></span>
+            
+           
+              <form action="/edit" method="PUT" class="popUp">
+                <input type="date" class="info date" name="date" placeholder="Today's Date" value="<%= ratRecord[i].date %>" >
+                <input type="text" class="info name" name="name" placeholder="Rat Name" value="<%= ratRecord[i].name %>" >
+                <input type="text" class="info note" name="dailyNote" placeholder="Daily Notes" value="<%= ratRecord[i].note %>" >
+                <button type="submit" class="updateDoc">Submit</button>
+              </form>
+  
+          </li>
+        
+        <% } %>
+        </ul>
+  </section>
         
 
 

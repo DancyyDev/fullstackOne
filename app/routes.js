@@ -23,53 +23,73 @@ module.exports = function (app, passport, db) {
       });
   });
 
-  app.post("/ratForm", (req, res) => {
+  app.post("/ratForm", isLoggedIn, (req, res) => {
     db.collection('ratRecord').insertOne(
-      { userID: req.user,
+      { 
+        userID: req.user,
         date: req.body.date,
         name: req.body.name,
-        weight: req.body.weight,
-        eyeColor: req.body.eyeColor,
-        furColor: req.body.furColor,
-        breed: req.body.breed,
-        note: req.body.dailyNote,
+        note: req.body.dailyNote 
       },
       (err, result) => {
         if (err) return console.log(err);
         console.log("saved to the Rat colony record");
         res.redirect("/index");
       }
-    );
+    )
   });
 
   // /////////////////////
   // edit path////////////
   // /////////////////////
+
+  // app.get('/edit', isLoggedIn, (req, res) => {
+  //   db.collection('ratRecord').find().toArray((err, result) => {
+  //       if (err) return console.log(err)
+  //       res.render('index.ejs', {ratRecord: result})
+  //   })
+  // })
   
-  app.get("/edit", (req, res) => {
-    res.render("edit.ejs");
+  app.put("/edit", isLoggedIn, (req, res) => {
+    db.collection('ratRecord').findOneAndUpdate(
+        { 
+          userID: req.user,
+          date: req.body.date,
+          name: req.body.name,
+          note: req.body.note 
+        },
+        { $set: {
+            userID: req.user,
+            date: req.body.date,
+            name: req.body.name,
+            note: req.body.note
+        }   
+    },
+    {
+        sort: {_id: -1},  
+        upsert: true
+    }, (err, result) => {
+        if (err) return res.send(err)
+        res.send(result)
+    })
   });  
 
 // //////////////////////////
 // Delete ///////////////////
 // //////////////////////////
 
-app.delete('/ratRecord-delete', (req, res) => {
+app.delete('/ratRecord', isLoggedIn, (req, res) => {
   db.collection('ratRecord').findOneAndDelete(
     {
       userID: req.user,
       date: req.body.date,
       name: req.body.name,
-      weight: req.body.weight,
-      eyeColor: req.body.eyeColor,
-      furColor: req.body.furColor,
-      breed: req.body.breed,
-      note: req.body.dailyNote,
+      note: req.body.note
       }, 
       (err, result) => {
     if (err) return res.send(500, err)
     res.send('Record deleted!')
-  })
+  }) 
 })
 
   // ////////////////////////

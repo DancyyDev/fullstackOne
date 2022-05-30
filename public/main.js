@@ -1,46 +1,18 @@
-const trash = document.querySelector(".trash");
+const trash = document.querySelectorAll(".fa-trash-can");
+const wrench = document.querySelectorAll(".fa-wrench");
+const update = document.querySelectorAll(".updateDoc");
 
-// trash.addEventListener("click", deleteData);
-
-// function deleteData(e) {
-//     console.log(e)
-//   const date = this.parentNode.parentNode.childNodes[3].innerText;
-//   const name = this.parentNode.parentNode.childNodes[5].innerText;
-//   const weight = this.parentNode.parentNode.childNodes[7].innerText;
-//   const eyeColor = this.parentNode.parentNode.childNodes[9].innerText;
-//   const furColor = this.parentNode.parentNode.childNodes[11].innerText;
-//   const breed = this.parentNode.parentNode.childNodes[13].innerText;
-//   const dailyNote = this.parentNode.parentNode.childNodes[15].innerText;
-//   fetch("ratRecord-delete", {
-//     method: "delete",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({
-//       'date': date,
-//       'name': name,
-//       'weight': weight,
-//       'eyeColor': eyeColor,
-//       'furColor': furColor,
-//       'breed': breed,
-//       'note': dailyNote,
-//     }).then(function (response) {
-//       window.location.reload();
-//     }),
-//   });
-// }
 
 Array.from(trash).forEach(function(element) {
     element.addEventListener('click', function(){
-        const date = this.parentNode.parentNode.childNodes[3].innerText;
-        const name = this.parentNode.parentNode.childNodes[5].innerText;
-        const weight = this.parentNode.parentNode.childNodes[7].innerText;
-        const eyeColor = this.parentNode.parentNode.childNodes[9].innerText;
-        const furColor = this.parentNode.parentNode.childNodes[11].innerText;
-        const breed = this.parentNode.parentNode.childNodes[13].innerText;
-        const dailyNote = this.parentNode.parentNode.childNodes[15].innerText;
+      console.log(this.parentNode.parentNode.childNodes[5].innerText)
 
-      fetch('ratRecord-delete', {
+        const date = this.parentNode.parentNode.childNodes[2].innerText
+        const name = this.parentNode.parentNode.childNodes[5].innerText
+        const note = this.parentNode.parentNode.childNodes[8].innerText
+      
+
+      fetch('ratRecord', {
         method: 'delete',
         headers: {
           'Content-Type': 'application/json'
@@ -48,16 +20,49 @@ Array.from(trash).forEach(function(element) {
         body: JSON.stringify({
             'date': date,
             'name': name,
-            'weight': weight,
-            'eyeColor': eyeColor,
-            'furColor': furColor,
-            'breed': breed,
-            'note': dailyNote
+            'note': note
         })
-      }).then(function (response) {
-        window.location.reload()
-        console.log(fetch.method)
+      }) .then(data => {
+        console.log(data)
+        window.location.reload(true)
       })
     });
 });
 
+Array.from(update).forEach(function(element) {
+  element.addEventListener('click', function(){
+    console.log(this.parentNode)
+
+      const date = this.parentNode.parentNode.childNodes[2].innerText
+      const name = this.parentNode.parentNode.childNodes[5].innerText
+      const note = this.parentNode.parentNode.childNodes[8].innerText
+    
+
+    fetch('ratRecord', {
+      method: 'put',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          'date': date,
+          'name': name,
+          'note': note
+      })
+    }) .then(data => {
+      console.log(data)
+      window.location.reload(true)
+    })
+  });
+});
+
+
+Array.from(wrench).forEach(function(element) {
+  element.addEventListener('click', function(){
+    console.log(this.parentNode.parentNode.childNodes[5].innerText)
+
+    console.log(this.parentNode.parentNode.childNodes[14])
+    const editForm = this.parentNode.parentNode.childNodes[14]
+
+    editForm.classList.toggle('popUp')
+  });
+});

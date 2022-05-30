@@ -87,3 +87,20 @@ p {
     font-weight: 600;
 }
 
+.ratList {
+    list-style: none;
+}
+
+/* ///////////////// */
+/* Pop-up update */
+/* ///////////////// */
+
+ul {
+    padding: 0;
+}
+
+.popUp {
+    display: none;
+    width:100%;
+    height: 100%;
+}
