@@ -1,26 +1,22 @@
 const trash = document.querySelectorAll(".fa-trash-can");
 const wrench = document.querySelectorAll(".fa-wrench");
-const update = document.querySelectorAll(".updateDoc");
+// const update = document.querySelectorAll(".updateDoc");
 
 
 Array.from(trash).forEach(function(element) {
     element.addEventListener('click', function(){
       console.log(this.parentNode.parentNode.childNodes[5].innerText)
 
-        const date = this.parentNode.parentNode.childNodes[2].innerText
-        const name = this.parentNode.parentNode.childNodes[5].innerText
-        const note = this.parentNode.parentNode.childNodes[8].innerText
-      
+        const ratId = this.parentNode.parentNode.id
+      console.log(ratId)
 
-      fetch('ratRecord', {
+      fetch('ratRecord-delete', {
         method: 'delete',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            'date': date,
-            'name': name,
-            'note': note
+            '_id': ratId
         })
       }) .then(data => {
         console.log(data)
@@ -28,33 +24,6 @@ Array.from(trash).forEach(function(element) {
       })
     });
 });
-
-Array.from(update).forEach(function(element) {
-  element.addEventListener('click', function(){
-    console.log(this.parentNode)
-
-      const date = this.parentNode.parentNode.childNodes[2].innerText
-      const name = this.parentNode.parentNode.childNodes[5].innerText
-      const note = this.parentNode.parentNode.childNodes[8].innerText
-    
-
-    fetch('ratRecord', {
-      method: 'put',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-          'date': date,
-          'name': name,
-          'note': note
-      })
-    }) .then(data => {
-      console.log(data)
-      window.location.reload(true)
-    })
-  });
-});
-
 
 Array.from(wrench).forEach(function(element) {
   element.addEventListener('click', function(){

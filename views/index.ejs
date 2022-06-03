@@ -34,7 +34,7 @@
             <form action="/ratForm" method="POST">
               <input type="date" class="info date" name="date" placeholder="Today's Date">
               <input type="text" class="info name" name="name" placeholder="Rat Name">
-              <input type="text" class="info note" name="dailyNote" placeholder="Daily Notes">
+              <input type="text" class="info note" name="note" placeholder="Daily Notes">
               <button type="submit">Submit</button>
             </form>
 
@@ -52,18 +52,19 @@
         <ul class="ratRecord">
         <% for(var i=0; i<ratRecord.length; i++) {%>
         
-          <li class="ratList">
+          <li id="<%= ratRecord[i]._id %>">
             <p>Recorded Date:</p><span class="record date" ><%= ratRecord[i].date %></span>
             <p>Name:</p><span class="record name" ><%= ratRecord[i].name %></span>
             <p>Note:</p><span class="record note" ><%= ratRecord[i].note %></span>
             <span><i class="fa-solid fa-trash-can"></i></i></span>
             <span><i class="fa-solid fa-wrench"></i></i></span>
             
-           
-              <form action="/edit" method="PUT" class="popUp">
+          
+              <form action="/edit" method="POST" class="popUp">
+                <input type="hidden" name="msgId" value="<%= ratRecord[i]._id %>" >
                 <input type="date" class="info date" name="date" placeholder="Today's Date" value="<%= ratRecord[i].date %>" >
                 <input type="text" class="info name" name="name" placeholder="Rat Name" value="<%= ratRecord[i].name %>" >
-                <input type="text" class="info note" name="dailyNote" placeholder="Daily Notes" value="<%= ratRecord[i].note %>" >
+                <input type="text" class="info note" name="note" placeholder="Daily Notes" value="<%= ratRecord[i].note %>" >
                 <button type="submit" class="updateDoc">Submit</button>
               </form>
   

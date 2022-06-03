@@ -1,4 +1,5 @@
 module.exports = function (app, passport, db) {
+  const { ObjectId } = require('mongodb')
 
   app.get("/", (req, res) => {
     res.render("home.ejs");
@@ -29,7 +30,7 @@ module.exports = function (app, passport, db) {
         userID: req.user,
         date: req.body.date,
         name: req.body.name,
-        note: req.body.dailyNote 
+        note: req.body.note 
       },
       (err, result) => {
         if (err) return console.log(err);
@@ -49,17 +50,13 @@ module.exports = function (app, passport, db) {
   //       res.render('index.ejs', {ratRecord: result})
   //   })
   // })
-  
-  app.put("/edit", isLoggedIn, (req, res) => {
+  // using post becasue html form doesnt like put
+  app.post("/edit", isLoggedIn, (req, res) => {
     db.collection('ratRecord').findOneAndUpdate(
         { 
-          userID: req.user,
-          date: req.body.date,
-          name: req.body.name,
-          note: req.body.note 
+          _id: ObjectId( req.body.msgId)
         },
         { $set: {
-            userID: req.user,
             date: req.body.date,
             name: req.body.name,
             note: req.body.note
@@ -69,8 +66,8 @@ module.exports = function (app, passport, db) {
         sort: {_id: -1},  
         upsert: true
     }, (err, result) => {
-        if (err) return res.send(err)
-        res.send(result)
+        if (err) return res.send(err) // If responding to fetch, redirect from serverside will not work
+        res.redirect("/index")        //Just send back to browser for browser to work with
     })
   });  
 
@@ -78,13 +75,10 @@ module.exports = function (app, passport, db) {
 // Delete ///////////////////
 // //////////////////////////
 
-app.delete('/ratRecord', isLoggedIn, (req, res) => {
+app.delete('/ratRecord-delete', isLoggedIn, (req, res) => {
   db.collection('ratRecord').findOneAndDelete(
     {
-      userID: req.user,
-      date: req.body.date,
-      name: req.body.name,
-      note: req.body.note
+      _id: ObjectId( req.body._id)
       }, 
       (err, result) => {
     if (err) return res.send(500, err)
