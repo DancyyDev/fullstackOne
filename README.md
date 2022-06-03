@@ -1,13 +1,16 @@
-# fullstackOne
+# FullstackOne
+A practice project where we utilize JavaScript, Node.js and CRUD to make a simple app. The app in this project is creating a log journal for pet rat owners.
 
-Not fully complete.
+## How It's Made:
 
-I have completed in creating a log-in and sign up.
+**Tech used:** HTML5, CSS3, JavaScript, Node.js
 
-Completed a POST, GET, and DELETE.
+Practicing on how to make apps and learning best practices on making apps.
 
-Failed in finishing the PUT and in created a log where only your data shows. I want to bring this into community to get it working.
+## Optimizations
 
-Some of the difficulties I ran into was when I was trying to create a pop-up form to act as a PUT method form.
+This is a great start. I could add more features to make it run more smoothly and more styling to make it look more appealing.
 
-I will ask questions on community.
+## Lessons Learned:
+
+Learned more about create a fullstack app than I did before.
