@@ -1,28 +1,26 @@
 <!doctype html>
 <html>
 <head>
-    <title>Rat Log</title>
+    <title>Rats Rats Rats</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Joan&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/d60e865119.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header>
+    <h1>The Daily Rat Log</h1>
+  </header>
   <section class="container">
-
-    <!-- <section class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
-        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-    </section> -->
-
     <section class="row">
 
         <!-- LOCAL INFORMATION -->
         <section class="profile">
             <section class="innerProfile">
                 <% if (user.local.email)  {%>
-                    <p>
-                    <strong>email</strong>: <%= user.local.email %><br>
-                    <strong>password</strong>: <%= user.local.password %>
-                    </p>
+                    <p><span>User</span>: <%= user.local.firstName %></p>
+                    <p><span>password</span>: <%= user.local.email %></p>
                     <% } %>
 
                     <a href="/logout" class="logOut"><button>Log-out</button></a>
