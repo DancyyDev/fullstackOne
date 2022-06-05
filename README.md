@@ -1,7 +1,8 @@
 # FullstackOne
 A practice project where we utilize JavaScript, Node.js and CRUD to make a simple app. The app in this project is creating a log journal for pet rat owners.
 
-![alt tag](https://drive.google.com/file/d/1VKcdor-UAvMYur4_jPEyQUxh91A3cRu0/view?usp=sharing)
+![alt tag](![fullstackOne](https://user-images.githubusercontent.com/102541428/172066864-c9d7e86b-ef5e-47c2-b5c3-b208ca38a840.png)
+)
 
 ## How It's Made:
 
