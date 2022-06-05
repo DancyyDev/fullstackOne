@@ -6,7 +6,7 @@
 }
 
 body {
-    background: #B1371F;
+    background: #FCEBE2;
 }
 
 /* {"color100":"#FCEBE2",
@@ -40,29 +40,31 @@ header {
 h1 {
     font-weight: 600;
     font-size: 2.5rem;
-    width: 80%;
-    margin:0 10%;
+    width: 60%;
+    margin:0 20%;
     padding: .5rem 0;
     color: white;
+    text-shadow: #570B08 1px 1px 2px;;
 }
 
 
 .landpage {
-    width: 35%;
+    width: 25%;
     float: left;
     height: 20rem;
     padding: 0 2rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
 .signup {
-    margin-left: 10%;
-    margin-right: 5%;
+    margin-left: 20%;
+    margin-right: 2.5%;
     background: white;
     border-radius: 2rem;
 }
 .login {
-    margin-right: 10%;
-    margin-left: 5%;
+    margin-right: 20%;
+    margin-left: 2.5%;
     background: white;
     border-radius: 2rem;
 }
@@ -96,8 +98,8 @@ button {
 /* /////////////////// */
 
 .row {
-    width: 80%;
-    margin: 0 10%;
+    width: 60%;
+    margin: 0 20%;
 }
 .profile {
     float: left;
@@ -124,9 +126,9 @@ button {
 
 .ratDisplay{
     float: left;
-    width: 80%;
+    width: 60%;
     height: 50rem;
-    margin: 0 10%;
+    margin: 0 20%;
     padding: 3.5%;
     background: white;
     border-radius: 3rem; 
@@ -160,8 +162,9 @@ button {
 }
 
 .ratRecord li {
-    width: 20%;
-    margin: 0 1rem 0 0;
+    padding-right: 1rem;
+    width: 23%;
+    margin: 0 1rem 2rem 0;
 }
 
 .ratList {
