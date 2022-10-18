@@ -13,8 +13,10 @@ const flash    = require('connect-flash');
 
 const morgan       = require('morgan');
 const cookieParser = require('cookie-parser');
-// const session      = require('express-session');
-const session      = require('cookie-session');
+const session      = require('express-session');
+const MongoStore   = require('connect-mongo')(session)
+const sessionStore = new MongoStore({url: mongoDb.url});
+// const session      = require('cookie-session');
 
 let db
 
@@ -35,11 +37,7 @@ app.use(express.static('public'))
 
 // required for passport
 app.use(session({
-    cookie:{
-      secure: true,
-      maxAge:60000
-        },
-    store: new RedisStore(),  
+    store: MongoStore,  
     secret: 'rcbootcamp2021b',
     resave: true,
     saveUninitialized: true
