@@ -35,6 +35,11 @@ app.use(express.static('public'))
 
 // required for passport
 app.use(session({
+    cookie:{
+      secure: true,
+      maxAge:60000
+        },
+    store: new RedisStore(),  
     secret: 'rcbootcamp2021b',
     resave: true,
     saveUninitialized: true
