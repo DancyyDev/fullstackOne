@@ -13,7 +13,8 @@ const flash    = require('connect-flash');
 
 const morgan       = require('morgan');
 const cookieParser = require('cookie-parser');
-const session      = require('express-session');
+// const session      = require('express-session');
+const session      = require('cookie-session');
 
 let db
 
