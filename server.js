@@ -37,7 +37,7 @@ app.use(express.static('public'))
 
 // required for passport
 app.use(session({
-    store: MongoStore,  
+    store: new MongoStore,  
     secret: 'rcbootcamp2021b',
     resave: true,
     saveUninitialized: true
