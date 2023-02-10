@@ -1,7 +1,7 @@
 const bodyParser = require('body-parser')
 const express = require('express')
 const app = express()
-const MongoClient = require('mongodb').MongoClient
+// const MongoClient = require('mongodb').MongoClient
 const mongoDb = require('./config/database.js')
 const port = process.env.PORT || 1000
 const passport = require('passport')
@@ -14,8 +14,8 @@ const flash    = require('connect-flash');
 const morgan       = require('morgan');
 const cookieParser = require('cookie-parser');
 const session      = require('express-session');
-const MongoStore   = require('connect-mongo')(session)
-const sessionStore = new MongoStore({url: mongoDb.url});
+const MongoStore   = require('connect-mongo')
+// const sessionStore = new MongoStore({url: mongoDb.url});
 // const session      = require('cookie-session');
 
 let db
@@ -37,7 +37,7 @@ app.use(express.static('public'))
 
 // required for passport
 app.use(session({
-    store: sessionStore,  
+    store: MongoStore,  
     secret: 'rcbootcamp2021b',
     resave: true,
     saveUninitialized: true
